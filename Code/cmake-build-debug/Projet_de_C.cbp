@@ -8,28 +8,28 @@
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="C:/Users/rapha/CLionProjects/Projet de C/cmake-build-debug"/>
+				<Option working_dir="C:/Users/rapha/OneDrive/Bureau/Projet-de-C/Code/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/rapha/CLionProjects/Projet de C/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/rapha/CLionProjects/Projet de C/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/rapha/CLionProjects/Projet de C/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/rapha/CLionProjects/Projet de C/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/rapha/OneDrive/Bureau/Projet-de-C/Code/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/rapha/OneDrive/Bureau/Projet-de-C/Code/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/rapha/OneDrive/Bureau/Projet-de-C/Code/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/rapha/OneDrive/Bureau/Projet-de-C/Code/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="C:/Users/rapha/CLionProjects/Projet de C/cmake-build-debug"/>
+				<Option working_dir="C:/Users/rapha/OneDrive/Bureau/Projet-de-C/Code/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/rapha/CLionProjects/Projet de C/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/rapha/CLionProjects/Projet de C/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/rapha/CLionProjects/Projet de C/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/rapha/CLionProjects/Projet de C/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/rapha/OneDrive/Bureau/Projet-de-C/Code/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/rapha/OneDrive/Bureau/Projet-de-C/Code/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/rapha/OneDrive/Bureau/Projet-de-C/Code/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/rapha/OneDrive/Bureau/Projet-de-C/Code/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="Projet_de_C">
-				<Option output="C:/Users/rapha/CLionProjects/Projet de C/cmake-build-debug/Projet_de_C.exe" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="C:/Users/rapha/CLionProjects/Projet de C/cmake-build-debug"/>
+				<Option output="C:/Users/rapha/OneDrive/Bureau/Projet-de-C/Code/cmake-build-debug/Projet_de_C.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/rapha/OneDrive/Bureau/Projet-de-C/Code/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -39,15 +39,15 @@
 					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/8.2.0/include-fixed"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/rapha/CLionProjects/Projet de C/cmake-build-debug/Makefile&quot;  VERBOSE=1 Projet_de_C"/>
-					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/rapha/CLionProjects/Projet de C/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/rapha/CLionProjects/Projet de C/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/rapha/CLionProjects/Projet de C/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/rapha/OneDrive/Bureau/Projet-de-C/Code/cmake-build-debug/Makefile&quot;  VERBOSE=1 Projet_de_C"/>
+					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/rapha/OneDrive/Bureau/Projet-de-C/Code/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/rapha/OneDrive/Bureau/Projet-de-C/Code/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/rapha/OneDrive/Bureau/Projet-de-C/Code/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="Projet_de_C/fast">
-				<Option output="C:/Users/rapha/CLionProjects/Projet de C/cmake-build-debug/Projet_de_C.exe" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="C:/Users/rapha/CLionProjects/Projet de C/cmake-build-debug"/>
+				<Option output="C:/Users/rapha/OneDrive/Bureau/Projet-de-C/Code/cmake-build-debug/Projet_de_C.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/rapha/OneDrive/Bureau/Projet-de-C/Code/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -57,27 +57,27 @@
 					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/8.2.0/include-fixed"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/rapha/CLionProjects/Projet de C/cmake-build-debug/Makefile&quot;  VERBOSE=1 Projet_de_C/fast"/>
-					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/rapha/CLionProjects/Projet de C/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/rapha/CLionProjects/Projet de C/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/rapha/CLionProjects/Projet de C/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/rapha/OneDrive/Bureau/Projet-de-C/Code/cmake-build-debug/Makefile&quot;  VERBOSE=1 Projet_de_C/fast"/>
+					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/rapha/OneDrive/Bureau/Projet-de-C/Code/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/rapha/OneDrive/Bureau/Projet-de-C/Code/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/rapha/OneDrive/Bureau/Projet-de-C/Code/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="C:/Users/rapha/CLionProjects/Projet de C/cmake-build-debug"/>
+				<Option working_dir="C:/Users/rapha/OneDrive/Bureau/Projet-de-C/Code/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/rapha/CLionProjects/Projet de C/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/rapha/CLionProjects/Projet de C/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/rapha/CLionProjects/Projet de C/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/rapha/CLionProjects/Projet de C/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/rapha/OneDrive/Bureau/Projet-de-C/Code/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/rapha/OneDrive/Bureau/Projet-de-C/Code/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/rapha/OneDrive/Bureau/Projet-de-C/Code/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/rapha/OneDrive/Bureau/Projet-de-C/Code/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="C:/Users/rapha/CLionProjects/Projet de C/main.c">
+		<Unit filename="C:/Users/rapha/OneDrive/Bureau/Projet-de-C/Code/main.c">
 			<Option target="Projet_de_C"/>
 		</Unit>
-		<Unit filename="C:/Users/rapha/CLionProjects/Projet de C/CMakeLists.txt">
+		<Unit filename="C:/Users/rapha/OneDrive/Bureau/Projet-de-C/Code/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>
