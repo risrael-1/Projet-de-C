@@ -3,4 +3,4 @@ project(Code C)
 
 set(CMAKE_C_STANDARD 99)
 
-add_executable(Code main.c)
+add_executable(Code main.c validator_xml.h validator_xml.c)
