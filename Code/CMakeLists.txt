@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.15)
-project(Projet_de_C C)
+project(Code C)
 
 set(CMAKE_C_STANDARD 99)
 
-add_executable(Projet_de_C main.c)
+add_executable(Code main.c)

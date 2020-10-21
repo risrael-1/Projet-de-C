@@ -1,2 +1,2 @@
-# Empty dependencies file for Projet_de_C.
+# Empty dependencies file for Code.
 # This may be replaced when dependencies are built.

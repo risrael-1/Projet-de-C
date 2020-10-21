@@ -55,17 +55,6 @@ CMAKE_BINARY_DIR = C:\Users\rapha\OneDrive\Bureau\Projet-de-C\Code\cmake-build-d
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target rebuild_cache
-rebuild_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	"C:\Program Files\JetBrains\CLion 2019.2.3\bin\cmake\win\bin\cmake.exe" -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : rebuild_cache
-
-# Special rule for the target rebuild_cache
-rebuild_cache/fast: rebuild_cache
-
-.PHONY : rebuild_cache/fast
-
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
@@ -76,6 +65,17 @@ edit_cache:
 edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
+
+# Special rule for the target rebuild_cache
+rebuild_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
+	"C:\Program Files\JetBrains\CLion 2019.2.3\bin\cmake\win\bin\cmake.exe" -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : rebuild_cache
+
+# Special rule for the target rebuild_cache
+rebuild_cache/fast: rebuild_cache
+
+.PHONY : rebuild_cache/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -110,17 +110,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named Projet_de_C
+# Target rules for targets named Code
 
 # Build rule for target.
-Projet_de_C: cmake_check_build_system
-	$(MAKE) -f CMakeFiles\Makefile2 Projet_de_C
-.PHONY : Projet_de_C
+Code: cmake_check_build_system
+	$(MAKE) -f CMakeFiles\Makefile2 Code
+.PHONY : Code
 
 # fast build rule for target.
-Projet_de_C/fast:
-	$(MAKE) -f CMakeFiles\Projet_de_C.dir\build.make CMakeFiles/Projet_de_C.dir/build
-.PHONY : Projet_de_C/fast
+Code/fast:
+	$(MAKE) -f CMakeFiles\Code.dir\build.make CMakeFiles/Code.dir/build
+.PHONY : Code/fast
 
 main.obj: main.c.obj
 
@@ -128,7 +128,7 @@ main.obj: main.c.obj
 
 # target to build an object file
 main.c.obj:
-	$(MAKE) -f CMakeFiles\Projet_de_C.dir\build.make CMakeFiles/Projet_de_C.dir/main.c.obj
+	$(MAKE) -f CMakeFiles\Code.dir\build.make CMakeFiles/Code.dir/main.c.obj
 .PHONY : main.c.obj
 
 main.i: main.c.i
@@ -137,7 +137,7 @@ main.i: main.c.i
 
 # target to preprocess a source file
 main.c.i:
-	$(MAKE) -f CMakeFiles\Projet_de_C.dir\build.make CMakeFiles/Projet_de_C.dir/main.c.i
+	$(MAKE) -f CMakeFiles\Code.dir\build.make CMakeFiles/Code.dir/main.c.i
 .PHONY : main.c.i
 
 main.s: main.c.s
@@ -146,7 +146,7 @@ main.s: main.c.s
 
 # target to generate assembly for a file
 main.c.s:
-	$(MAKE) -f CMakeFiles\Projet_de_C.dir\build.make CMakeFiles/Projet_de_C.dir/main.c.s
+	$(MAKE) -f CMakeFiles\Code.dir\build.make CMakeFiles/Code.dir/main.c.s
 .PHONY : main.c.s
 
 # Help Target
@@ -155,9 +155,9 @@ help:
 	@echo ... all (the default if no target is provided)
 	@echo ... clean
 	@echo ... depend
-	@echo ... rebuild_cache
-	@echo ... Projet_de_C
+	@echo ... Code
 	@echo ... edit_cache
+	@echo ... rebuild_cache
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s

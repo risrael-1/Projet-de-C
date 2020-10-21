@@ -52,12 +52,12 @@ CMAKE_BINARY_DIR = C:\Users\rapha\OneDrive\Bureau\Projet-de-C\Code\cmake-build-d
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/Projet_de_C.dir/all
+all: CMakeFiles/Code.dir/all
 
 .PHONY : all
 
 # The main recursive "clean" target.
-clean: CMakeFiles/Projet_de_C.dir/clean
+clean: CMakeFiles/Code.dir/clean
 
 .PHONY : clean
 
@@ -67,31 +67,31 @@ preinstall:
 .PHONY : preinstall
 
 #=============================================================================
-# Target rules for target CMakeFiles/Projet_de_C.dir
+# Target rules for target CMakeFiles/Code.dir
 
 # All Build rule for target.
-CMakeFiles/Projet_de_C.dir/all:
-	$(MAKE) -f CMakeFiles\Projet_de_C.dir\build.make CMakeFiles/Projet_de_C.dir/depend
-	$(MAKE) -f CMakeFiles\Projet_de_C.dir\build.make CMakeFiles/Projet_de_C.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\Users\rapha\OneDrive\Bureau\Projet-de-C\Code\cmake-build-debug\CMakeFiles --progress-num=1,2 "Built target Projet_de_C"
-.PHONY : CMakeFiles/Projet_de_C.dir/all
+CMakeFiles/Code.dir/all:
+	$(MAKE) -f CMakeFiles\Code.dir\build.make CMakeFiles/Code.dir/depend
+	$(MAKE) -f CMakeFiles\Code.dir\build.make CMakeFiles/Code.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\Users\rapha\OneDrive\Bureau\Projet-de-C\Code\cmake-build-debug\CMakeFiles --progress-num=1,2 "Built target Code"
+.PHONY : CMakeFiles/Code.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/Projet_de_C.dir/rule: cmake_check_build_system
+CMakeFiles/Code.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\rapha\OneDrive\Bureau\Projet-de-C\Code\cmake-build-debug\CMakeFiles 2
-	$(MAKE) -f CMakeFiles\Makefile2 CMakeFiles/Projet_de_C.dir/all
+	$(MAKE) -f CMakeFiles\Makefile2 CMakeFiles/Code.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\rapha\OneDrive\Bureau\Projet-de-C\Code\cmake-build-debug\CMakeFiles 0
-.PHONY : CMakeFiles/Projet_de_C.dir/rule
+.PHONY : CMakeFiles/Code.dir/rule
 
 # Convenience name for target.
-Projet_de_C: CMakeFiles/Projet_de_C.dir/rule
+Code: CMakeFiles/Code.dir/rule
 
-.PHONY : Projet_de_C
+.PHONY : Code
 
 # clean rule for target.
-CMakeFiles/Projet_de_C.dir/clean:
-	$(MAKE) -f CMakeFiles\Projet_de_C.dir\build.make CMakeFiles/Projet_de_C.dir/clean
-.PHONY : CMakeFiles/Projet_de_C.dir/clean
+CMakeFiles/Code.dir/clean:
+	$(MAKE) -f CMakeFiles\Code.dir\build.make CMakeFiles/Code.dir/clean
+.PHONY : CMakeFiles/Code.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.
