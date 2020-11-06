@@ -8,6 +8,12 @@ typedef struct XMLTag{
 
 }XMLTag;
 
+typedef struct DTDTag{
+    char* name;
+    char* contentType;
+    int isSimpleElement;
+}DTDTag;
+
 FILE *openFile(char *fileName);
 
 long countLine(FILE* file);
@@ -20,3 +26,4 @@ int strpos(char* haystack, char* value);
 
 XMLTag getXMLTag(char* line);
 
+DTDTag getDTDTag(char line[]);
