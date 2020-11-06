@@ -12,6 +12,12 @@ typedef struct XMLTag{
 
 }XMLTag;
 
+typedef struct DTDTag{
+    char* name;
+    char* contentType;
+    int isSimpleElement;
+}DTDTag;
+
 FILE *openFile(char *fileName) {
     FILE *f = fopen(fileName, "r");
     if(f != NULL) {
@@ -167,5 +173,39 @@ XMLTag getXMLTag(char line[]){
 
 
 
+    return result;
+}
+
+DTDTag getDTDTag(char line[]){
+    printf("--Func start\n");
+    int openStart = strpos(line, "<!ELEMENT");
+    int openEnd = -1;
+    int closeStart = 0;
+    int closeEnd = 0;
+    DTDTag result;
+
+
+    if (openStart!=-1){
+        closeStart = strpos(line, ">");
+        if (closeStart>0){
+
+
+            int openParentesis = strpos(line, "(");
+            int closeParentesis = strpos(line, ")");
+
+            int lenghtName = (openParentesis-openStart)-9;
+
+            if (openParentesis>=0 && closeParentesis>=0){
+
+                result.name = malloc(sizeof(char)*lenghtName);
+
+                result.name = substring(line, openStart+10, lenghtName-1);
+                result.contentType = substring(line, openParentesis+1, closeParentesis-openParentesis-1);
+                result.isSimpleElement = 0;
+            }
+        }
+    }
+
+    printf("--Func end\n");
     return result;
 }
