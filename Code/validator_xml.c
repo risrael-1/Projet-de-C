@@ -135,18 +135,19 @@ XMLTag getXMLTag(char line[]){
     if (openStart!=-1){
         closeStart = strpos(line, ">");
         if (closeStart>0){
-            int lenghtName = (closeStart-openStart)-1;
+            int lengthName = (closeStart-openStart)-1;
 
-            char* name = substring(line, openStart+1, lenghtName);
+            char* name = substring(line, openStart+1, lengthName);
 
-            result.name = malloc(sizeof(char)*lenghtName);
+            result.name = malloc(sizeof(char)*lengthName);
 
             int slash = strpos(name, "/");
             if (slash>=0){
-                result.name = substring(line, openStart+2, lenghtName-1);
+                result.name = substring(line, openStart+2, lengthName-1);
                 result.isSimpleElement = 0;
                 result.isEndOfSet = 1;
             }else{
+                //printf("--BUG %s\n", name);
                 strcpy(result.name, name);
             }
 
@@ -177,7 +178,6 @@ XMLTag getXMLTag(char line[]){
 }
 
 DTDTag getDTDTag(char line[]){
-    printf("--Func start\n");
     int openStart = strpos(line, "<!ELEMENT");
     int openEnd = -1;
     int closeStart = 0;
@@ -193,19 +193,42 @@ DTDTag getDTDTag(char line[]){
             int openParentesis = strpos(line, "(");
             int closeParentesis = strpos(line, ")");
 
-            int lenghtName = (openParentesis-openStart)-9;
+            int lengthName = (openParentesis-openStart)-9;
 
             if (openParentesis>=0 && closeParentesis>=0){
 
-                result.name = malloc(sizeof(char)*lenghtName);
+                result.name = malloc(sizeof(char)*lengthName);
 
-                result.name = substring(line, openStart+10, lenghtName-1);
+                result.name = substring(line, openStart+10, lengthName-2);
                 result.contentType = substring(line, openParentesis+1, closeParentesis-openParentesis-1);
                 result.isSimpleElement = 0;
             }
         }
     }
 
-    printf("--Func end\n");
     return result;
+}
+
+int compare(XMLTag xml[], int xml_size, DTDTag dtd[], int dtd_size){
+
+    XMLTag tag;
+    DTDTag rule;
+    int exist;
+    for (int i = 0; i < xml_size; i++) {
+        tag = xml[i];
+        exist = 0;
+        for (int j = 0; j < dtd_size; j++) {
+            rule = dtd[j];
+            int test = strcmp(tag.name,rule.name);
+            if (test==0){
+                exist = 1;
+            }
+        }
+        if (exist == 0){
+            return 0;
+        }
+    }
+
+    return 1;
+
 }

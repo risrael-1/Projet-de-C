@@ -17,12 +17,18 @@ int main() {
     char** document = parseToArray(file1,&top);
     char** document2 = parseToArray(file2,&top2);
 
+
+    XMLTag xmls[top];int summitXmls = 0;
+    DTDTag dtds[top2];int summitDtds = 0;
+
     XMLTag tag;
     for (int i = 0; i < top; i++) {
         char eject[] = "<?xml";
         int pos = strpos(document[i],eject);
         if (!(pos>=0)){
             tag = getXMLTag(document[i]);
+            xmls[summitXmls] = tag;
+            summitXmls++;
 
             printf("tag.name : %s\n",tag.name);
             printf("tag.value : %s\n",tag.value);
@@ -40,16 +46,29 @@ int main() {
 
         if (!(pos>=0) && !(pos2>=0)){
             dtd = getDTDTag(document2[i]);
-            printf("%s\n", document2[i]);
+            dtds[summitDtds] = dtd;
+            summitDtds++;
 
             printf("dtd.name : %s\n",dtd.name);
             printf("dtd.contentType : %s\n",dtd.contentType);
             printf("dtd.isSimpleElement : %d\n",dtd.isSimpleElement);
 
         }
+
+    }
+
+    int result = compare(xmls, summitXmls, dtds, summitDtds);
+
+    if (result==1){
+        printf("XML is valid !\n");
+    }else{
+        printf("XML is not valid !\n");
     }
 
     printf("--Program end\n");
+
+    fclose(file1);
+    fclose(file2);
 
 
     return 0;
