@@ -27,3 +27,5 @@ int strpos(char* haystack, char* value);
 XMLTag getXMLTag(char* line);
 
 DTDTag getDTDTag(char line[]);
+
+int compare(XMLTag xml[], int xml_size, DTDTag dtd[], int dtd_size);
