@@ -11,6 +11,7 @@ typedef struct XMLTag{
     int isEndOfSet;
     char** parametersKeys;
     char** parametersValues;
+    int parametersSize;
 
 }XMLTag;
 
@@ -18,6 +19,8 @@ typedef struct DTDTag{
     char* name;
     char* contentType;
     int isSimpleElement;
+    int isElement;
+    char* parametersList;
 }DTDTag;
 
 FILE *openFile(char *fileName) {
@@ -149,12 +152,8 @@ XMLTag getXMLTag(char line[]){
                 result.name = substring(line, openStart+2, lengthName-1);
                 result.isSimpleElement = 0;
                 result.isEndOfSet = 1;
-            }else{
-
-
-                // strtok = recupére le contenu jusqu'au délimiteur
+            } else {
                 char *param;
-
                 result.parametersKeys = malloc(sizeof(char)*100);
                 result.parametersValues = malloc(sizeof(char)*100);
 
@@ -173,13 +172,13 @@ XMLTag getXMLTag(char line[]){
                         strToken = strtok(NULL, separators);
                         result.parametersValues[i] = strToken;
                         strToken = strtok(NULL, separators);
-                        printf("%s = %s\n", result.parametersKeys[i], result.parametersValues[i]);
 
                         i++;
                     }
+                    result.parametersSize = i;
 
                 }else{
-
+                    result.parametersSize = 0;
                     //printf("--BUG %s\n", name);
                     strcpy(result.name, name);
                 }
@@ -196,7 +195,6 @@ XMLTag getXMLTag(char line[]){
 
 
     openEnd = strpos(line, closeTag);
-
     if (openEnd>0){
         closeEnd = openEnd+strlen(closeTag);
 
@@ -214,28 +212,50 @@ XMLTag getXMLTag(char line[]){
 }
 
 DTDTag getDTDTag(char line[]){
-    int openStart = strpos(line, "<!ELEMENT");
+    int openStartElement = strpos(line, "<!ELEMENT");
+    int openStartAttribute = strpos(line, "<!ATTLIST");
+    int openStart = -1;
     int openEnd = -1;
     int closeStart = 0;
     int closeEnd = 0;
     DTDTag result;
 
+    if(openStartElement >= 0) {
+        openStart = openStartElement;
+        result.isElement = 1;
+    } else if (openStartAttribute >= 0) {
+        openStart = openStartAttribute;
+        result.isElement = 0;
+    }
 
-    if (openStart!=-1){
+
+    if (openStart != -1){
         closeStart = strpos(line, ">");
         if (closeStart>0){
-
 
             int openParentesis = strpos(line, "(");
             int closeParentesis = strpos(line, ")");
 
-            int lengthName = (openParentesis-openStart)-9;
+            int lengthName = (openParentesis - openStart) - 9;
 
             if (openParentesis>=0 && closeParentesis>=0){
-
+                char* name;
                 result.name = malloc(sizeof(char)*lengthName);
+                name = malloc(sizeof(char)*lengthName);
+                name = substring(line, openStart + 10, lengthName - 2);
+                if (strpos(name, " ") >= 0){
+                    char * separators = " ";
+                    char * strToken = strtok(name, separators);
+                    result.name = strToken;
+                    result.parametersList = malloc(sizeof(char)*lengthName);
 
-                result.name = substring(line, openStart+10, lengthName-2);
+                    while (strToken != NULL) {
+                        strToken = strtok(NULL, separators);
+                        strcpy(result.parametersList, strToken);
+                    }
+                } else {
+                    result.name = name;
+                }
                 result.contentType = substring(line, openParentesis+1, closeParentesis-openParentesis-1);
                 result.isSimpleElement = 0;
             }
@@ -249,15 +269,43 @@ int compare(XMLTag xml[], int xml_size, DTDTag dtd[], int dtd_size){
 
     XMLTag tag;
     DTDTag rule;
+    DTDTag attributeList;
     int exist;
     for (int i = 0; i < xml_size; i++) {
         tag = xml[i];
         exist = 0;
         for (int j = 0; j < dtd_size; j++) {
             rule = dtd[j];
-            int test = strcmp(tag.name,rule.name);
-            if (test==0){
-                exist = 1;
+            if(rule.isElement == 1){
+                int test = strcmp(tag.name,rule.name);
+                if (test==0) {
+                    exist = 1;
+                    int existParameter = 0;
+                    int existAttributeList = 0;
+                    for (int k = 0; k < tag.parametersSize; k++) {
+                        char *parameterKey = tag.parametersKeys[k];
+                        for (int l = 0; l < dtd_size; l++) {
+                            attributeList = dtd[l];
+                            if (attributeList.isElement == 0) {
+                                if(strcmp(attributeList.name, tag.name) == 0){
+                                    existAttributeList = 1;
+                                    int test2 = strpos(attributeList.parametersList, parameterKey);
+                                    if (test2 >= 0){
+                                        existParameter = 1;
+                                    } else {
+                                        printf("%s\n", attributeList.parametersList);
+                                        printf("%s\n", parameterKey);
+
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    if(existAttributeList == 1 && existParameter == 0){
+                        exist = 0;
+                        printf("%s", tag.name);
+                    }
+                }
             }
         }
         if (exist == 0){

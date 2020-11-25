@@ -16,7 +16,6 @@ int main() {
     printf("--------------------------------------------\n\n");
 
     if(*test == 'y' || *test == 'Y') {
-        printf("Debug");
 
         FILE *file1 = openFile("exemple.xml");
         FILE *file2 = openFile("test.dtd");
@@ -43,10 +42,16 @@ int main() {
                 summitXmls++;
 
 
-                //printf("tag.name : %s\n",tag.name);
-                //printf("tag.value : %s\n",tag.value);
-                //printf("tag.isSimpleElement : %d\n",tag.isSimpleElement);
-                //printf("tag.isEndOfSet : %d\n\n",tag.isEndOfSet);
+                printf("tag.name : %s\n",tag.name);
+                printf("tag.value : %s\n",tag.value);
+                printf("tag.isSimpleElement : %d\n",tag.isSimpleElement);
+                printf("tag.isEndOfSet : %d\n",tag.isEndOfSet);
+
+                printf("tag.size : %d\n",tag.parametersSize);
+
+                for (int j = 0; j < tag.parametersSize; j++){
+                    printf("tag.dico : [%s, %s]\n",tag.parametersKeys[j], tag.parametersValues[j] );
+                }
 
             }
         }
@@ -63,9 +68,11 @@ int main() {
                 dtds[summitDtds] = dtd;
                 summitDtds++;
 
-                //printf("dtd.name : %s\n",dtd.name);
-                //printf("dtd.contentType : %s\n",dtd.contentType);
-                //printf("dtd.isSimpleElement : %d\n",dtd.isSimpleElement);
+                printf("dtd.name : %s\n",dtd.name);
+                printf("dtd.contentType : %s\n",dtd.contentType);
+                printf("dtd.isSimpleElement : %d\n",dtd.isSimpleElement);
+                printf("dtd.isElement : %d\n",dtd.isElement);
+
 
             }
 
