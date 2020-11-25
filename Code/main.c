@@ -10,7 +10,7 @@ int main() {
     char test[20] = {0};
     printf("--Program start\n");
 
-    printf("Vérifiez les fichiers dtd et xml\n");
+    printf("Veuillez verifier que les fichiers dtd et xml soient places dans le dossier de build\n");
     printf("Voulez vous lancer la comparaison ? (y/n)  ");
     scanf("%s", test);
     printf("--------------------------------------------\n\n");
@@ -32,6 +32,7 @@ int main() {
         int summitDtds = 0;
 
         XMLTag tag;
+        printf("\n- Extract XML\n\n");
         for (int i = 0; i < top; i++) {
             char eject[] = "<?xml";
             int pos = strpos(document[i], eject);
@@ -41,13 +42,21 @@ int main() {
                 summitXmls++;
 
 
-                //printf("tag.name : %s\n",tag.name);
-                //printf("tag.value : %s\n",tag.value);
-                //printf("tag.isSimpleElement : %d\n",tag.isSimpleElement);
-                //printf("tag.isEndOfSet : %d\n\n",tag.isEndOfSet);
+                printf("tag.name : %s\n",tag.name);
+                printf("tag.value : %s\n",tag.value);
+                printf("tag.isSimpleElement : %d\n",tag.isSimpleElement);
+                printf("tag.isEndOfSet : %d\n",tag.isEndOfSet);
+
+                printf("tag.parametersSize : %d\n",tag.parametersSize);
+
+                for (int j = 0; j < tag.parametersSize; j++){
+                    printf("tag.dico : [%s, %s]\n",tag.parametersKeys[j], tag.parametersValues[j] );
+                }
 
             }
         }
+
+        printf("\n\n- Extract DTD\n\n");
 
         DTDTag dtd;
         for (int i = 0; i < top2; i++) {
@@ -61,30 +70,45 @@ int main() {
                 dtds[summitDtds] = dtd;
                 summitDtds++;
 
-                //printf("dtd.name : %s\n",dtd.name);
-                //printf("dtd.contentType : %s\n",dtd.contentType);
-                //printf("dtd.isSimpleElement : %d\n",dtd.isSimpleElement);
+                printf("dtd.name : %s\n",dtd.name);
+                printf("dtd.contentType : %s\n",dtd.contentType);
+                printf("dtd.isSimpleElement : %d\n",dtd.isSimpleElement);
+                printf("dtd.isElement : %d\n",dtd.isElement);
+                printf("dtd.parametersList : %s\n",dtd.parametersList);
+
 
             }
 
         }
 
         int result = compare(xmls, summitXmls, dtds, summitDtds);
-
+        printf("\n");
+        for (int i = 0; i < 20; ++i) {
+            printf("#");
+        }
         if (result == 1) {
-            printf("Le XML est valide !\n");
+            printf("\nLe XML est valide !\n");
         } else {
-            printf("Le XML n'est pas valide !\n");
+            printf("\nLe XML n'est pas valide !\n");
+        }
+        for (int i = 0; i < 20; ++i) {
+            printf("#");
         }
 
-        printf("--Program end\n");
+        printf("\n--Program end\n");
 
         fclose(file1);
         fclose(file2);
 
+        free(document);
+        free(document2);
+        free(xmls);
+        free(dtds);
+
 
         return 0;
     } else {
-        printf("A bientôt");
+        printf("A bientot");
+
     }
 }

@@ -1,10 +1,12 @@
-
 typedef struct XMLTag{
 
     char* name;
     char* value;
     int isSimpleElement;
     int isEndOfSet;
+    char** parametersKeys;
+    char** parametersValues;
+    int parametersSize;
 
 }XMLTag;
 
@@ -12,6 +14,8 @@ typedef struct DTDTag{
     char* name;
     char* contentType;
     int isSimpleElement;
+    int isElement;
+    char* parametersList;
 }DTDTag;
 
 FILE *openFile(char *fileName);
