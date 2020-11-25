@@ -150,8 +150,41 @@ XMLTag getXMLTag(char line[]){
                 result.isSimpleElement = 0;
                 result.isEndOfSet = 1;
             }else{
-                //printf("--BUG %s\n", name);
-                strcpy(result.name, name);
+
+
+                // strtok = recupére le contenu jusqu'au délimiteur
+                char *param;
+
+                result.parametersKeys = malloc(sizeof(char)*100);
+                result.parametersValues = malloc(sizeof(char)*100);
+
+                if (strpos(name," ")>=0){
+                    char * separators = " =\"";
+                    char * strToken = strtok(name, separators);
+                    strcpy(result.name, strToken);
+
+                    int i = 0;
+                    while(strToken != NULL){
+                        result.parametersKeys[i] = malloc(sizeof(char)*100);
+                        result.parametersValues[i] = malloc(sizeof(char)*100);
+
+                        strToken = strtok(NULL, separators);
+                        result.parametersKeys[i] = strToken;
+                        strToken = strtok(NULL, separators);
+                        result.parametersValues[i] = strToken;
+                        strToken = strtok(NULL, separators);
+                        printf("%s = %s\n", result.parametersKeys[i], result.parametersValues[i]);
+
+                        i++;
+                    }
+
+                }else{
+
+                    //printf("--BUG %s\n", name);
+                    strcpy(result.name, name);
+                }
+
+
             }
 
         }
@@ -163,37 +196,6 @@ XMLTag getXMLTag(char line[]){
 
 
     openEnd = strpos(line, closeTag);
-
-    // strtok = recupére le contenu jusqu'au délimiteur
-    char *resultName = malloc(sizeof(char) * 100);
-    strcpy(resultName, result.name);
-    char *param;
-
-    result.parametersKeys = malloc(sizeof(char)*100);
-    result.parametersValues = malloc(sizeof(char)*100);
-
-    int i = 0;
-    char *paramKey;
-    char *paramValue;
-    do {
-        param = strtok(NULL, " ");
-        if (strpos(param, "=") >= 0){
-            continue;
-        }
-        paramKey = strtok(param, "=");
-        strtok(paramKey, '"');
-        paramValue = strtok(paramKey, '"');
-
-        result.parametersKeys[i] = paramKey;
-        result.parametersValues[i] = paramValue;
-
-        i++;
-
-        printf("%s = %s\n", paramKey, paramValue);
-
-    } while(param != NULL);
-
-
 
     if (openEnd>0){
         closeEnd = openEnd+strlen(closeTag);
