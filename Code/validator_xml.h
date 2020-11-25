@@ -1,10 +1,10 @@
-
 typedef struct XMLTag{
-
     char* name;
     char* value;
     int isSimpleElement;
     int isEndOfSet;
+    char** parametersKeys;
+    char** parametersValues;
 
 }XMLTag;
 

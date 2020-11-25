@@ -9,6 +9,8 @@ typedef struct XMLTag{
     char* value;
     int isSimpleElement;
     int isEndOfSet;
+    char** parametersKeys;
+    char** parametersValues;
 
 }XMLTag;
 
@@ -94,6 +96,7 @@ int strpos(char* haystack, char* value){
  * Return 2 for </tag>
  * Return 3 for <tag></tag>
  * */
+
 int containAnXMLTag(char* line){
     int openStart = strpos(line, "<");
     int openEnd = strpos(line, "</");
@@ -164,13 +167,33 @@ XMLTag getXMLTag(char line[]){
     // strtok = recupére le contenu jusqu'au délimiteur
     char *resultName = malloc(sizeof(char) * 100);
     strcpy(resultName, result.name);
-    char *toto = strtok(resultName, " ");
+    char *param;
+
+    result.parametersKeys = malloc(sizeof(char)*100);
+    result.parametersValues = malloc(sizeof(char)*100);
+
+    int i = 0;
+    char *paramKey;
+    char *paramValue;
+    do {
+        param = strtok(NULL, " ");
+        if (strpos(param, "=") >= 0){
+            continue;
+        }
+        paramKey = strtok(param, "=");
+        strtok(paramKey, '"');
+        paramValue = strtok(paramKey, '"');
+
+        result.parametersKeys[i] = paramKey;
+        result.parametersValues[i] = paramValue;
+
+        i++;
+
+        printf("%s = %s\n", paramKey, paramValue);
+
+    } while(param != NULL);
 
 
-    while(toto != NULL) {
-        printf("%s\n", toto);
-        toto = strtok(NULL, " ");
-    }
 
     if (openEnd>0){
         closeEnd = openEnd+strlen(closeTag);

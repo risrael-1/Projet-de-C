@@ -16,6 +16,7 @@ int main() {
     printf("--------------------------------------------\n\n");
 
     if(*test == 'y' || *test == 'Y') {
+        printf("Debug");
 
         FILE *file1 = openFile("exemple.xml");
         FILE *file2 = openFile("test.dtd");
@@ -32,6 +33,7 @@ int main() {
         int summitDtds = 0;
 
         XMLTag tag;
+
         for (int i = 0; i < top; i++) {
             char eject[] = "<?xml";
             int pos = strpos(document[i], eject);
@@ -86,5 +88,6 @@ int main() {
         return 0;
     } else {
         printf("A bientôt");
+
     }
 }
