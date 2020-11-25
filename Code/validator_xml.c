@@ -136,6 +136,8 @@ XMLTag getXMLTag(char line[]){
     int closeEnd = 0;
     XMLTag result;
     result.isEndOfSet = 0;
+    result.isSimpleElement = 0;
+    result.parametersSize = 0;
 
 
     if (openStart!=-1){
@@ -144,6 +146,7 @@ XMLTag getXMLTag(char line[]){
             int lengthName = (closeStart-openStart)-1;
 
             char* name = substring(line, openStart+1, lengthName);
+
 
             result.name = malloc(sizeof(char)*lengthName);
 
@@ -190,6 +193,7 @@ XMLTag getXMLTag(char line[]){
 
     }
 
+
     char* closeTag = malloc(sizeof(char)*(strlen(result.name)+3));
     sprintf(closeTag, "</%s>",result.name);
 
@@ -203,6 +207,7 @@ XMLTag getXMLTag(char line[]){
 
     }else{
         result.value = NULL;
+        result.parametersSize = 0;
         result.isSimpleElement = 0;
     }
 
@@ -219,6 +224,10 @@ DTDTag getDTDTag(char line[]){
     int closeStart = 0;
     int closeEnd = 0;
     DTDTag result;
+    result.isSimpleElement = 0;
+    result.isElement = 0;
+    result.parametersList = NULL;
+
 
     if(openStartElement >= 0) {
         openStart = openStartElement;
@@ -235,14 +244,18 @@ DTDTag getDTDTag(char line[]){
 
             int openParentesis = strpos(line, "(");
             int closeParentesis = strpos(line, ")");
+            int lengthName;
+            if (result.isElement==1){
+                lengthName = (openParentesis - openStart) - 9;
+            }else{
+                lengthName = (closeStart - openStart) - 9;
+            }
 
-            int lengthName = (openParentesis - openStart) - 9;
-
-            if (openParentesis>=0 && closeParentesis>=0){
+            if ((openParentesis>=0 && closeParentesis>=0) || result.isElement==0){
                 char* name;
                 result.name = malloc(sizeof(char)*lengthName);
-                name = malloc(sizeof(char)*lengthName);
                 name = substring(line, openStart + 10, lengthName - 2);
+
                 if (strpos(name, " ") >= 0){
                     char * separators = " ";
                     char * strToken = strtok(name, separators);
@@ -251,12 +264,17 @@ DTDTag getDTDTag(char line[]){
 
                     while (strToken != NULL) {
                         strToken = strtok(NULL, separators);
-                        strcpy(result.parametersList, strToken);
+                        sprintf(result.parametersList,"%s%s;",result.parametersList, strToken);
                     }
                 } else {
+
                     result.name = name;
                 }
-                result.contentType = substring(line, openParentesis+1, closeParentesis-openParentesis-1);
+                if (result.isElement==1){
+                    result.contentType = substring(line, openParentesis+1, closeParentesis-openParentesis-1);
+                }else{
+                    result.contentType = NULL;
+                }
                 result.isSimpleElement = 0;
             }
         }
@@ -289,13 +307,10 @@ int compare(XMLTag xml[], int xml_size, DTDTag dtd[], int dtd_size){
                             if (attributeList.isElement == 0) {
                                 if(strcmp(attributeList.name, tag.name) == 0){
                                     existAttributeList = 1;
+                                    strcat(parameterKey,";");
                                     int test2 = strpos(attributeList.parametersList, parameterKey);
                                     if (test2 >= 0){
                                         existParameter = 1;
-                                    } else {
-                                        printf("%s\n", attributeList.parametersList);
-                                        printf("%s\n", parameterKey);
-
                                     }
                                 }
                             }
@@ -303,7 +318,10 @@ int compare(XMLTag xml[], int xml_size, DTDTag dtd[], int dtd_size){
                     }
                     if(existAttributeList == 1 && existParameter == 0){
                         exist = 0;
-                        printf("%s", tag.name);
+                    }else{
+                        if (strpos(rule.contentType, "#PCDATA")==-1 && tag.isSimpleElement==1){
+                            exist = 0;
+                        }
                     }
                 }
             }
