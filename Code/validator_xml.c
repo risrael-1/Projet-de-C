@@ -161,6 +161,17 @@ XMLTag getXMLTag(char line[]){
 
     openEnd = strpos(line, closeTag);
 
+    // strtok = recupére le contenu jusqu'au délimiteur
+    char *resultName = malloc(sizeof(char) * 100);
+    strcpy(resultName, result.name);
+    char *toto = strtok(resultName, " ");
+
+
+    while(toto != NULL) {
+        printf("%s\n", toto);
+        toto = strtok(NULL, " ");
+    }
+
     if (openEnd>0){
         closeEnd = openEnd+strlen(closeTag);
 
